@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amalendu | Premium Portfolio</title>
+    <title>Amalendu | Portfolio</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -12,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
+        /* ================= ROOT ================= */
         :root {
             --bg: #0f172a;
             --card: #1e293b;
@@ -25,101 +27,81 @@
             --text: #020617;
         }
 
+        /* ================= RESET ================= */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Poppins;
-            scroll-behavior: smooth;
+            font-family: Poppins, sans-serif;
         }
 
         body {
             background: var(--bg);
             color: var(--text);
+            line-height: 1.6;
         }
 
-        /* ================= PARTICLES ================= */
-        #particles-js {
-            position: fixed;
-            inset: 0;
-            z-index: -1;
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
         /* ================= NAVBAR ================= */
         header {
             position: fixed;
+            top: 0;
             width: 100%;
             background: var(--card);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 60px;
+            padding: 15px 8%;
             z-index: 1000;
         }
 
         nav a {
             margin: 0 12px;
-            color: var(--text);
-            text-decoration: none;
-            position: relative;
         }
 
-        nav a::after {
-            content: "";
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            transition: 0.3s;
-        }
-
-        nav a:hover::after {
-            width: 100%;
+        nav a:hover {
+            color: var(--accent);
         }
 
         #toggle {
             background: none;
             border: none;
-            font-size: 18px;
             color: var(--text);
+            font-size: 18px;
             cursor: pointer;
         }
 
         /* ================= SECTIONS ================= */
         section {
-            padding: 90px 60px;
-            opacity: 0;
-            transform: translateY(40px);
-            transition: 0.8s;
-            scroll-margin-top: 80px;
-        }
-
-        section.show {
-            opacity: 1;
-            transform: translateY(0);
+            padding: 110px 8% 80px;
         }
 
         h1 {
-            margin-bottom: 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.3rem;
         }
 
         /* ================= HOME ================= */
         .home {
-            min-height: 90vh;
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
+            flex-direction: column;
         }
 
         .home img {
-            width: 170px;
-            height: 170px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             border: 5px solid var(--accent);
+            margin-bottom: 20px;
         }
 
         .typing {
@@ -128,30 +110,35 @@
 
         .btn {
             margin-top: 20px;
-            padding: 12px 28px;
+            display: inline-block;
+            padding: 12px 30px;
             background: var(--accent);
             color: black;
-            border-radius: 25px;
-            text-decoration: none;
+            border-radius: 30px;
+        }
+
+        .socials {
+            margin-top: 20px;
         }
 
         .socials a {
+            font-size: 24px;
+            margin: 0 12px;
             color: var(--accent);
-            font-size: 25px;
-            margin: 15px;
         }
 
         /* ================= ABOUT ================= */
         .about-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 25px;
         }
 
-        .about-box {
+        .about-card {
             background: var(--card);
-            padding: 20px;
-            border-radius: 12px;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
         }
 
         /* ================= SKILLS ================= */
@@ -161,10 +148,17 @@
             gap: 20px;
         }
 
+        .skill-card {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
         .progress {
             background: #444;
             height: 8px;
             border-radius: 10px;
+            margin-top: 10px;
         }
 
         .progress span {
@@ -174,51 +168,61 @@
         }
 
         /* ================= PROJECTS ================= */
-        .projects {
+        .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
         }
 
-        .card {
+        .project-card {
             background: var(--card);
             border-radius: 15px;
             overflow: hidden;
-            cursor: pointer;
-            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
         }
 
-        .card img {
+        .project-card img {
             width: 100%;
-            height: 160px;
+            height: 180px;
             object-fit: cover;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
+        .project-content {
+            padding: 20px;
+            flex: 1;
+        }
+
+        .project-content h3 {
+            margin-bottom: 10px;
+        }
+
+        .project-content p {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .project-content a {
+            display: inline-block;
+            padding: 8px 18px;
+            background: var(--accent);
+            color: black;
+            border-radius: 20px;
+            font-size: 14px;
         }
 
         /* ================= CONTACT ================= */
-        #contact {
+        .contact-wrapper {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
         }
 
         form {
-            max-width: 500px;
             width: 100%;
+            max-width: 450px;
             background: var(--card);
             padding: 30px;
             border-radius: 15px;
-            transform: translateY(40px);
-            opacity: 0;
-            transition: 0.8s;
-        }
-
-        form.show {
-            transform: translateY(0);
-            opacity: 1;
         }
 
         input,
@@ -226,59 +230,40 @@
             width: 100%;
             padding: 12px;
             margin: 10px 0;
-            border-radius: 8px;
             border: none;
+            border-radius: 8px;
         }
 
         button {
-            padding: 12px 25px;
+            width: 100%;
+            padding: 12px;
             background: var(--accent);
             border: none;
-            border-radius: 20px;
+            border-radius: 25px;
             cursor: pointer;
         }
 
-        /* ================= MODAL ================= */
-        #modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.7);
-            display: none;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: var(--card);
-            padding: 30px;
-            border-radius: 15px;
+        /* ================= FOOTER ================= */
+        footer {
             text-align: center;
+            padding: 20px;
+            background: var(--card);
         }
 
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 30px;
-            cursor: pointer;
-        }
-
-        /* ================= MOBILE ================= */
+        /* ================= RESPONSIVE ================= */
         @media (max-width: 768px) {
             header {
-                padding: 15px 25px;
+                padding: 15px 5%;
             }
 
             section {
-                padding: 70px 25px;
+                padding: 100px 5% 70px;
             }
         }
     </style>
 </head>
 
 <body>
-
-    <div id="particles-js"></div>
 
     <!-- NAVBAR -->
     <header>
@@ -294,11 +279,11 @@
     </header>
 
     <!-- HOME -->
-    <section id="home" class="home show">
+    <section id="home" class="home">
         <img src="https://i.imgur.com/4ZQZ4Zm.png" alt="Profile">
         <h1>Hello, I'm Amalendu</h1>
         <h2>I am a <span class="typing"></span></h2>
-        <a href="cv.pdf" class="btn" download>Download CV</a>
+        <a href="#" class="btn">Download CV</a>
 
         <div class="socials">
             <a href="#"><i class="fab fa-github"></i></a>
@@ -309,22 +294,20 @@
     <!-- ABOUT -->
     <section id="about">
         <h1>About Me</h1>
-        <p>I am a passionate Web Developer and Programmer who loves building clean,
-            responsive and user-friendly websites.</p>
 
         <div class="about-grid">
-            <div class="about-box">
-                <h3>🎓 Education</h3>
+            <div class="about-card">
+                <h3>Education</h3>
                 <p>BCA Student</p>
             </div>
 
-            <div class="about-box">
-                <h3>💻 Experience</h3>
-                <p>Frontend & IoT Projects</p>
+            <div class="about-card">
+                <h3>Experience</h3>
+                <p>Web Development & IoT Projects</p>
             </div>
 
-            <div class="about-box">
-                <h3>🎯 Goals</h3>
+            <div class="about-card">
+                <h3>Goal</h3>
                 <p>Become Full Stack Developer</p>
             </div>
         </div>
@@ -335,29 +318,24 @@
         <h1>Skills</h1>
 
         <div class="skills-grid">
-            <div>
-                <p>HTML</p>
-                <div class="progress"><span style="width: 90%"></span></div>
+            <div class="skill-card">
+                HTML
+                <div class="progress"><span style="width:90%"></span></div>
             </div>
 
-            <div>
-                <p>CSS</p>
-                <div class="progress"><span style="width: 85%"></span></div>
+            <div class="skill-card">
+                CSS
+                <div class="progress"><span style="width:85%"></span></div>
             </div>
 
-            <div>
-                <p>JavaScript</p>
-                <div class="progress"><span style="width: 75%"></span></div>
+            <div class="skill-card">
+                JavaScript
+                <div class="progress"><span style="width:75%"></span></div>
             </div>
 
-            <div>
-                <p>C++</p>
-                <div class="progress"><span style="width: 80%"></span></div>
-            </div>
-
-            <div>
-                <p>Git & GitHub</p>
-                <div class="progress"><span style="width: 70%"></span></div>
+            <div class="skill-card">
+                C++
+                <div class="progress"><span style="width:80%"></span></div>
             </div>
         </div>
     </section>
@@ -366,17 +344,32 @@
     <section id="projects">
         <h1>Projects</h1>
 
-        <div class="projects">
-            <div class="card" onclick="openModal('Portfolio Website','Personal responsive portfolio.')">
+        <div class="projects-grid">
+            <div class="project-card">
                 <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="">
+                <div class="project-content">
+                    <h3>Portfolio Website</h3>
+                    <p>Personal responsive portfolio built using HTML, CSS and JavaScript.</p>
+                    <a href="#">View</a>
+                </div>
             </div>
 
-            <div class="card" onclick="openModal('Gas Leakage Detector','IoT safety system.')">
+            <div class="project-card">
                 <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e" alt="">
+                <div class="project-content">
+                    <h3>Gas Leakage Detector</h3>
+                    <p>IoT based gas detection and alert system.</p>
+                    <a href="#">View</a>
+                </div>
             </div>
 
-            <div class="card" onclick="openModal('Smart Home','Home automation project.')">
+            <div class="project-card">
                 <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="">
+                <div class="project-content">
+                    <h3>Smart Home</h3>
+                    <p>Home automation using sensors and Arduino.</p>
+                    <a href="#">View</a>
+                </div>
             </div>
         </div>
     </section>
@@ -385,31 +378,27 @@
     <section id="contact">
         <h1>Contact Me</h1>
 
-        <form id="contactForm">
-            <input type="text" placeholder="Name" required>
-            <input type="email" placeholder="Email" required>
-            <textarea rows="5" placeholder="Message" required></textarea>
-            <button type="submit">Send</button>
-            <p id="successMsg"></p>
-        </form>
+        <div class="contact-wrapper">
+            <form id="contactForm">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="5" placeholder="Message" required></textarea>
+                <button type="submit">Send Message</button>
+                <p id="msg"></p>
+            </form>
+        </div>
     </section>
 
-    <!-- MODAL -->
-    <div id="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="modalTitle"></h2>
-            <p id="modalDesc"></p>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Amalendu. All Rights Reserved.</p>
+    </footer>
 
     <script>
-        // DARK MODE
+        /* DARK MODE */
         toggle.onclick = () => document.body.classList.toggle("light");
 
-        // TYPING EFFECT
+        /* TYPING EFFECT */
         const words = ["Web Developer", "Programmer", "IoT Enthusiast"];
         let i = 0, j = 0, del = false;
 
@@ -427,51 +416,14 @@
         }
         type();
 
-        // SCROLL REVEAL
-        const sections = document.querySelectorAll("section");
-        const form = document.querySelector("form");
-
-        window.addEventListener("scroll", () => {
-            sections.forEach(s => {
-                if (s.getBoundingClientRect().top < window.innerHeight - 100) {
-                    s.classList.add("show");
-                }
-            });
-
-            if (form.getBoundingClientRect().top < window.innerHeight - 100) {
-                form.classList.add("show");
-            }
-        });
-
-        // CONTACT
+        /* CONTACT FORM */
         contactForm.onsubmit = e => {
             e.preventDefault();
-            successMsg.textContent = "Message Sent Successfully!";
+            msg.textContent = "Message Sent Successfully!";
             contactForm.reset();
         };
-
-        // MODAL
-        function openModal(t, d) {
-            modal.style.display = "flex";
-            modalTitle.innerText = t;
-            modalDesc.innerText = d;
-        }
-
-        function closeModal() {
-            modal.style.display = "none";
-        }
-
-        // PARTICLES
-        particlesJS("particles-js", {
-            particles: {
-                number: { value: 80 },
-                size: { value: 3 },
-                move: { speed: 2 },
-                line_linked: { enable: true },
-                color: { value: "#38bdf8" }
-            }
-        });
     </script>
 
 </body>
+
 </html>
